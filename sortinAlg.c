@@ -16,10 +16,12 @@
 
 #include <stdio.h>
 
+#define PRINT_RESULT
+
 /*
  * Helper functions
  */
-void swap (int *a, int *b)
+static void swap (int *a, int *b)
 {
 	int temp = 0;
 
@@ -68,18 +70,22 @@ void selectionSort (int *inArr, int numItems)
 		{
 			swap (&inArr[i], &inArr[smallestItem]);
 		}
-		
+#ifdef TEST_SORT	
 		printf ("\nIntermediate sorted Array:");
 		for(j = 0; j < numItems; j++)
 		{
 			printf ("%d\t", inArr[j]);
 		}
+#endif
 	}
-	
+
+#ifdef PRINT_RESULT
 	printf ("\nSorted Array:");
 	for(j = 0; j < numItems; j++)
 	{
 		printf ("%d\t", inArr[j]);
 	}
+	printf ("\n");
+#endif
 }
 
