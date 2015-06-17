@@ -16,7 +16,16 @@
 
 #include <stdio.h>
 
-int binarySearch (int *inArr, int searchItem);
+/*
+ * Usable enums
+ */
+typedef enum
+{
+	FALSE = 0,
+	TRUE
+} Boolean;
+
+Boolean binarySearch (int *inArr, int searchItem, int numItems);
 
 int main ()
 {
@@ -33,11 +42,50 @@ int main ()
 		scanf ("%d", &inArr[i]);
 	}
 
+	printf ("\nEnter the search item: ");
+	scanf ("%d", &searchItem);
+
 	selectionSort (inArr, numItems);
-	binarySearch (inArr, searchItem);
+	if (binarySearch (inArr, searchItem, numItems) == TRUE)
+	{
+		printf ("Item found!\n");
+	}
+	else
+	{
+		printf ("Item not found in the array\n");
+	}
+	return 0;
 }
 
-int binarySearch (int *inArr, int searchItem)
+Boolean binarySearch (int *inArr, int searchItem, int numItems)
 {
-	return 0;
+	int fwd = 0, bwd = 0, inter = 0;
+
+	if (inArr == NULL)
+	{
+		printf ("Input Error! Can't proceed further!\n");
+		return FALSE;
+	}
+	bwd = numItems;
+	while (fwd <= bwd)
+	{
+		inter = (fwd + bwd)/2;
+		if (inArr[inter] == searchItem)
+		{
+#ifdef PRINT_RESULT
+			printf ("Item Found!!!\n");
+#endif
+			return TRUE;
+		}
+		else if (inArr[inter] > searchItem)
+		{
+			bwd = inter - 1;
+		}
+		else
+		{
+			fwd = inter + 1;
+		}
+	}
+
+	return FALSE;
 }
