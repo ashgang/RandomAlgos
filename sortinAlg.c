@@ -104,7 +104,7 @@ void insertionSort (int *inArr, int numItems)
 	}
 
 	/*
-	 * The sorting part starts here 34 56 23 12
+	 * The sorting part starts here
 	 */
 	for (i = 1; i < numItems; i++)
 	{
