@@ -15,3 +15,13 @@ The root folder consists of mostly algos and other programs implemented in C and
 	- basicTh.c - First thread program I wrote after eons!
 	- basicFork_ChdOrph.c - Check the program comments for some information
 	- basicFork_ParentWaitin.c - Check the program comments for some information
+	- LinearSearch.c - Linear search implementation.  It takes O(1) best case and O(n) worst case running times
+	- sortinAlg.c - Implements some searching algorithms, to be compiled as library and link with other programs that require sorting as intermediate step.
+	- binarySearch.c - Binary search implementation. It takes O(1) best case and O(log n) worst case running times.  Note that
+	you have to compile "sortinAlg.c" first as a library and link it to binary search when compiling it.  This search uses sorting algo's from the lib.
+	To make task easy there is a makeLibrary.sh file, the usage is as below:
+		- Step 1: ./makeLibrary.sh sortAlgos sortinAlg.c
+		- Step 2: gcc binarySearch.c  -lsortAlgos -L./libs
+		- ./a.out
+	As you may see, the library will be put to ./libs folder and intermediate files will be put to ./interFiles folder.  So make sure these are available.
+
