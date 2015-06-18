@@ -29,7 +29,7 @@ Boolean binarySearch (int *inArr, int searchItem, int numItems);
 
 int main ()
 {
-	int numItems = 0, i = 0, inArr[100] = {0}, searchItem = 0;
+	int numItems = 0, i = 0, inArr[100] = {0}, searchItem = 0, sortAlgoCh = 0;
 
 	do
 	{
@@ -44,8 +44,28 @@ int main ()
 
 	printf ("\nEnter the search item: ");
 	scanf ("%d", &searchItem);
+	
+	printf ("\n 1) Selection Sort \n 2) Insertion Sort \n Choose sorting algo:");
+	scanf ("%d", &sortAlgoCh);
 
-	selectionSort (inArr, numItems);
+	switch (sortAlgoCh)
+	{
+		case 1:
+			selectionSort (inArr, numItems);
+			break;
+
+		case 2:
+			insertionSort (inArr, numItems);
+			break;
+
+		default:
+			/*
+			 * Wrong input, so default it to the most optimal sort algo in the list
+			 */
+			insertionSort (inArr, numItems);
+			break;
+	}
+
 	if (binarySearch (inArr, searchItem, numItems) == TRUE)
 	{
 		printf ("Item found!\n");

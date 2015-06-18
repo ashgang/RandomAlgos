@@ -83,7 +83,53 @@ void selectionSort (int *inArr, int numItems)
 	printf ("\nSorted Array:");
 	for(j = 0; j < numItems; j++)
 	{
-		printf ("%d\t", inArr[j]);
+		printf ("\t%d", inArr[j]);
+	}
+	printf ("\n");
+#endif
+}
+
+/*
+ * Insertion sort is an in-place sorting algorithm with the best case running time of O(n) and worst 
+ * case running time of O(n^2)
+ */
+void insertionSort (int *inArr, int numItems)
+{
+	int i = 0, j = 0, key = 0, k = 0;
+
+	if ((inArr == NULL) || (numItems <= 0))
+	{
+		printf ("Input Error! Can't continue further\n");
+		return ;
+	}
+
+	/*
+	 * The sorting part starts here 34 56 23 12
+	 */
+	for (i = 1; i < numItems; i++)
+	{
+		key = inArr[i];
+		j = i - 1;
+		while((j >= 0) && (inArr[j] > key))
+		{
+			inArr[j + 1] = inArr[j];
+			j--;
+		}
+		inArr[j + 1] = key;
+#ifdef TEST_SORT	
+		printf ("\nIntermediate sorted Array:");
+		for(k = 0; k < numItems; k++)
+		{
+			printf ("%d\t", inArr[k]);
+		}
+#endif
+	}
+
+#ifdef PRINT_RESULT
+	printf ("\nSorted Array:");
+	for(j = 0; j < numItems; j++)
+	{
+		printf ("\t%d", inArr[j]);
 	}
 	printf ("\n");
 #endif
